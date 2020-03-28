@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    background: rgb(4, 70, 21);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+}
+
+body{
+    font: 15px, "Consolas", sans-serif;
+    color: black;
+}
+
+.contenedor {
+    width: 98%;
+    margin: auto;
+    
+}
+
+.navegacion {
+    margin-top: 50px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+}
+
+input[type=submit]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 16px 8px;
+  cursor: pointer
+}
+
+.botones {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background: rgba(51,51,51,0.9);
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: seagreen;
+    color: white;
+    text-align: center;
+}

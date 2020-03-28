@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../css/estilos.css">
+  </head>
+  <body>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+
+    <header>
+      <h1>Fecha y signo</h1>
+    </header>
+    <div class="navegacion">
+    <p>Ingrese su fecha:</p>
+    <form class="" >
+      <input type="date" id="date" maxlength="10" size="12"/>
+      <input type="button" onClick="obtenerFecha(date);" value="Ok"/>
+    </form>
+    </div>
+
+    <div id="nvo"></div>
+
+   <script src="https://momentjs.com/downloads/moment.js"></script>
+    
+
+      <script type="text/javascript">
+    
+    function obtenerFecha(e){
+      var fecha = moment(e.value);
+      var convertido = fecha.format("DD/MM/YYYY"); 
+      validaFechaMenor(convertido);
+    }   
+
+    function validaFechaMenor(campo){
+        var bRet = false;
+        var dHoy = new Date();
+        var dCapt = null;
+        if (campo == "")
+          alert("Faltan datos");
+        else{
+          dCapt = validaFecha(campo);
+          if (dCapt != null && dCapt < dHoy)
+            bRet = true;
+          else
+            alert("La fecha debe ser menor a la fecha actual");
+        }
+        return bRet;
+      }
+
+        function validaFecha(valor){
+        		var dConvertida = null;
+        		var sAnio = "";
+        		var sMes = "";
+        		var sDia = "";
+        		var nAnio=0, nMes=0, nDia = 0;
+
+        		if (valor.match(/^\d{2}\/\d{2}\/\d{4}$/)){
+        			nDia = parseInt(valor.substring(0,2), 10);
+        			nMes = parseInt(valor.substring(3,5), 10);
+        			nAnio = parseInt(valor.substring(6,10), 10);
+
+        			if (nDia <1 || nDia>31)
+        				alert("El día no es válido")
+        			else{
+        				if (nMes <1 || nMes>12)
+        					alert("El mes no es válido");
+        				else{
+        					if ((nMes==1 || nMes==3 || nMes==5 || nMes==7 ||
+        						 nMes==8 || nMes==10 || nMes==12) && nDia > 31)
+        						 alert("El mes tiene máximo 31 días");
+        					else if ((nMes==4 || nMes==6 || nMes==9 ||
+        								nMes==11) && nDia > 30)
+        						 alert("El mes tiene máximo 30 días");
+        					else if ((nMes==2) && ((nDia>29) || (nAnio%4!=0 && nDia>28)))
+        						 alert("Febrero tiene 28 días o 29 en bisiesto");
+        					else{
+        						dConvertida = new Date();
+        						dConvertida.setFullYear(nAnio, nMes-1, nDia);
+        					}//fin validaci�n día-mes
+        				}//mes válido
+        			}//día válido
+              
+              creasigno(nDia,nMes);
+        		}//formato válido
+
+        		else{
+        			alert("No tiene formato de fecha");
+        		}
+        		return dConvertida;
+        }
+        
+        function creasigno(nDia,nMes){
+
+        //var newDiv = document.createElement("div");
+        var newDiv = document.getElementById("nvo");
+
+        if((nDia>20) && (nMes==3) || (nDia <=20) && (nMes==4))
+        var newContent = document.createTextNode("SIGNO ARIES  Tu número de la suerte es 5");
+        else if ((nDia>20) && (nMes==4) || (nDia <=20) && (nMes==5))
+          var newContent = document.createTextNode("SIGNO TAURO Tu número de la suerte es 12");
+          else if ((nDia>20) && (nMes==5) || (nDia <=20) && (nMes==6))
+            var newContent = document.createTextNode("SIGNO GEMINIS Tu número de la suerte es 3");
+            else if ((nDia>20) && (nMes==6) || (nDia <=22) && (nMes==7))
+              var newContent = document.createTextNode("SIGNO CANCER Tu número de la suerte es 2");
+              else if ((nDia>22) && (nMes==7) || (nDia <=23) && (nMes==8))
+                var newContent = document.createTextNode("SIGNO LEO Tu número de la suerte es 9");
+                else if ((nDia>23) && (nMes==8) || (nDia <=22) && (nMes==9))
+                  var newContent = document.createTextNode("SIGNO VIRGO Tu número de la suerte es 17");
+                  else if ((nDia>22) && (nMes==9) || (nDia <=22) && (nMes==10))
+                    var newContent = document.createTextNode("SIGNO LIBRA Tu número de la suerte es 6");
+                    else if ((nDia>22) && (nMes==10) || (nDia <=22) && (nMes==11))
+                      var newContent = document.createTextNode("SIGNO ESCORPIO Tu número de la suerte es 8");
+                      else if ((nDia>22) && (nMes==11) || (nDia <=21) && (nMes==12))
+                        var newContent = document.createTextNode("SIGNO SAGITARIO Tu número de la suerte es 4");
+                        else if ((nDia>21) && (nMes==12) || (nDia <=21) && (nMes==1))
+                          var newContent = document.createTextNode("SIGNO CAPRICORNIO Tu número de la suerte es 23");
+                          else if ((nDia>21) && (nMes==1) || (nDia <=21) && (nMes==2))
+                            var newContent = document.createTextNode("SIGNO ACUARIO Tu número de la suerte es 0");
+                            else if ((nDia>22) && (nMes==2) || (nDia <=23) && (nMes==3))
+                              var newContent = document.createTextNode("SIGNO PICIS Tu número de la suerte es 7");
+
+
+        //var newContent = document.createTextNode("SIGNO");
+        newDiv.innerHTML="";
+        newDiv.appendChild(newContent); //añade texto al div creado.
+
+         // añade el elemento creado y su contenido al DOM
+         var currentDiv = document.getElementById("div");
+         document.body.insertBefore(newDiv, currentDiv);
+        //newDiv.style="border: 3px solid #999999; background-color:#54b51e; width: 200px ;height:300px ";
+
+        if((nDia>20) && (nMes==3) || (nDia <=20) && (nMes==4))
+          newDiv.style="justyborder: 3px solid #cb3234; background-color:#cb3234; width: 200px ;height:300px ";
+        else if ((nDia>20) && (nMes==4) || (nDia <=20) && (nMes==5))
+            newDiv.style="border: 3px solid #ff0080; background-color:#f8f32b; width: 200px ;height:300px "
+          else if ((nDia>20) && (nMes==5) || (nDia <=20) && (nMes==6))
+             newDiv.style="border: 3px solid #54b51e; background-color:#f8f32b; width: 200px ;height:300px "
+            else if ((nDia>20) && (nMes==6) || (nDia <=22) && (nMes==7))
+              newDiv.style="border: 3px solid #8a9597; background-color:#54b51e; width: 200px ;height:300px ";
+              else if ((nDia>22) && (nMes==7) || (nDia <=23) && (nMes==8))
+                newDiv.style="border: 3px solid #efb810; background-color:#efb810; width: 200px ;height:300px "
+                else if ((nDia>23) && (nMes==8) || (nDia <=22) && (nMes==9))
+                  newDiv.style="border: 3px solid  #0000ff; background-color:#f4f4f4; width: 200px ;height:300px "
+                  else if ((nDia>22) && (nMes==9) || (nDia <=22) && (nMes==10))
+                    newDiv.style="border: 3px solid #54b51e; background-color:#0000ff; width: 200px ;height:300px "
+                    else if ((nDia>22) && (nMes==10) || (nDia <=22) && (nMes==11))
+                      newDiv.style="border: 3px solid #000000; background-color:#cb3234; width: 200px ;height:300px "
+                      else if ((nDia>22) && (nMes==11) || (nDia <=21) && (nMes==12))
+                        newDiv.style="border: 3px solid  #0000ff; background-color: #0000ff; width: 200px ;height:300px "
+                        else if ((nDia>21) && (nMes==12) || (nDia <=21) && (nMes==1))
+                          newDiv.style="border: 3px solid #094293; background-color:#4e3b31; width: 200px ;height:300px "
+                          else if ((nDia>21) && (nMes==1) || (nDia <=21) && (nMes==2))
+                            newDiv.style="border: 3px solid #cb3234; background-color:#0000ff; width: 200px ;height:300px "
+                            else if ((nDia>22) && (nMes==2) || (nDia <=23) && (nMes==3))
+                              newDiv.style="border: 3px solid #252850; background-color:#4a192c ; width: 200px ;height:300px "
+        }
+        
+      </script>
+      
+<footer>
+  <p class="firma">Realizado por: Julio Antonio Díaz Robles</p>
+</footer>
+
+  </body>
+</html>

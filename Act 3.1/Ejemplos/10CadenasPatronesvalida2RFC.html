@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="PQG">
+    <meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/estilos.css">
+<title>Control submit por evento formulario</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function valida(campo){
+			var bRet = false;
+			if (campo.value == "")
+				document.getElementById("respuesta").innerHTML = "Faltan datos";
+
+			else 	if (!campo.value.match(/^[A-Z]{3,4}\d{6}[A-Z0-9]{3}$/))
+					document.getElementById("respuesta").innerHTML = "No tiene formato de RFC"; 
+				else{
+				document.getElementById("respuesta").innerHTML = "Correcto"; 
+					bRet = true;
+				}
+			return bRet;
+		}
+	</script>
+	<header>
+		<h1> Validar RFC</h1>
+	</header>
+
+	<div class="navegacion">
+	<form>
+		RFC <input type="text" name="txtRFC" maxlength="13" size="15"/>
+		<br/>
+		<input type="submit" onClick="return valida(txtRFC);" value="Ok"/>
+	</form>
+	<h2 id="respuesta"></h2>
+	</div>	
+
+	<footer>
+		<p class="firma">Realizado por: Julio Antonio Díaz Robles</p>
+	  </footer>
+</body>
+</html>

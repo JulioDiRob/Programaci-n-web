@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio 7 - Factorial de un n&uacute;mero entero</title>
+<link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+<body>
+<header>
+  <h1>Factorial</h1>
+</header>
+
+<div class="navegacion">
+  <h1>El resultado es:</h1>
+  <h2 id="res"></h2>
+</div>
+
+<footer>
+  <p class="firma">Realizado por: Julio Antonio Díaz Robles</p>
+</footer>
+
+</body>
+
+
+<script type="text/javascript">
+  var numero = prompt("Introduce un n\u00famero y se mostrar\u00e1 su factorial");
+  var resultado = 1;
+  
+  for(var i=1; i<=numero; i++) {
+    resultado *= i;
+  }
+  document.getElementById("res").innerHTML = resultado;
+  </script>
+
+</html>

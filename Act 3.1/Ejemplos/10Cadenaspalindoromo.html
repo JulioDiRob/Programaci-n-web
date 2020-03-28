@@ -1,0 +1,62 @@
+<!DOCTYPE>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejercicio 10 - Detección de pal&iacute;ndromos</title>
+<link rel="stylesheet" href="../css/estilos.css">
+
+</head>
+<body>
+  <header>
+    <h1> Cadenas palindromo</h1>
+  </header>
+
+  <div class="navegacion">
+    <h1>Cadenas</h1>
+    <h2 id="ruta"></h2>
+    <h2 id="frase"></h2>
+  </div>
+
+  <footer>
+    <p class="firma">Realizado por: Julio Antonio Díaz Robles</p>
+  </footer>
+
+</body>
+
+<script type="text/javascript">
+  function palindromo(cadena) {
+  
+    var resultado = "La cadena \""+cadena+"\" \n";
+  
+    // Pasar a minusculas la cadena
+    var cadenaOriginal = cadena.toLowerCase();
+  
+    // Convertir la cadena en un array
+    var letrasEspacios = cadenaOriginal.split("");
+  
+    // Eliminar los espacios en blanco (este paso es demasiado largo ya que no se utiliza la funcion "replace")
+    var cadenaSinEspacios = "";
+    for(i in letrasEspacios)
+      if(letrasEspacios[i] != " ")
+            cadenaSinEspacios += letrasEspacios[i];
+  
+    var letras = cadenaSinEspacios.split("");
+    var letrasReves = cadenaSinEspacios.split("").reverse();
+  
+    // Este paso tambien es muy largo porque no se utiliza la sentencia "break"
+    var iguales = true;
+    for(i in letras)
+      if(letras[i] != letrasReves[i])
+           iguales = false;
+  
+  
+    if(iguales)
+      resultado += " es un palíndromo";
+    else
+      resultado += " no es un palíndromo";
+    return resultado;
+  }
+  document.getElementById("ruta").innerHTML = palindromo ("La ruta nos aporto otro paso natural");
+  document.getElementById("frase").innerHTML = palindromo("Esta frase no se parece a ningun palindromo")
+  </script>
+</html>
